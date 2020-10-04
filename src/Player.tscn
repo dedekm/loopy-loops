@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.8, 0.8, 0.4 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 3
@@ -41,6 +42,8 @@ transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform( 12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0 )
+cast_shadow = 2
+alpha_cut = 2
 frames = SubResource( 6 )
 animation = "run"
 frame = 2
