@@ -88,6 +88,12 @@ strafe_left={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="enviroment"
+3d_physics/layer_2="player"
+3d_physics/layer_3="pickups"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
