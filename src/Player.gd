@@ -4,9 +4,14 @@ const speed = 4
 
 var velocity = Vector3()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
   get_input()
   velocity = move_and_slide(velocity)
+  
+  if velocity.x != 0 || velocity.z != 0:
+    $Sprite.play()
+  else:
+    $Sprite.stop()
 
 func get_input() -> void:
   velocity.x = 0
