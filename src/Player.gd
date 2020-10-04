@@ -1,6 +1,6 @@
 extends KinematicBody
 
-const speed = 4
+const speed = 8
 
 var velocity = Vector3()
 
@@ -25,3 +25,5 @@ func get_input() -> void:
     velocity.x += speed
   if Input.is_action_pressed("strafe_left"):
     velocity.x -= speed
+  
+  velocity = velocity.normalized() * speed

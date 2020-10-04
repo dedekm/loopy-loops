@@ -18,7 +18,7 @@ background_color = Color( 0, 0.694118, 0.854902, 1 )
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0 )
 
 [node name="Loop" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -5 )
@@ -31,6 +31,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -7 )
 
 [node name="Walls" type="Spatial" parent="."]
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -51,6 +52,7 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
