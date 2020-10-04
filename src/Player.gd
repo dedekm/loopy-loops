@@ -2,7 +2,14 @@ extends KinematicBody
 
 const speed = 8
 
-var velocity = Vector3()
+var velocity := Vector3()
+var crunch_sounds := []
+
+func _init() -> void:
+  for s in [1,2,3]:
+    var audio_file = "res://assets/crunch" + str(s) + ".wav"
+    if File.new().file_exists(audio_file):
+      crunch_sounds.append(load(audio_file))
 
 func _physics_process(_delta: float) -> void:
   get_input()
@@ -27,3 +34,8 @@ func get_input() -> void:
     velocity.x -= speed
   
   velocity = velocity.normalized() * speed
+
+func crunch() -> void:
+  if not $AudioStreamPlayer.playing:
+      $AudioStreamPlayer.stream = crunch_sounds[randi() % crunch_sounds.size()]
+      $AudioStreamPlayer.play()

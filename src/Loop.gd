@@ -10,11 +10,12 @@ func _init() -> void:
   material.flags_unshaded = true
   $Torus001.set_surface_material(0, material)
 
-func _on_Area_body_entered(_body: Node) -> void:
+func _on_Area_body_entered(body: Node) -> void:
   if $Torus001.visible:
     $CrunchParticles.mesh = $CrunchParticles.mesh.duplicate()
     $CrunchParticles.mesh.surface_set_material(0, $Torus001.get_surface_material(0))
     
+    body.crunch()
     $CrunchParticles.set_emitting(true)
     $Torus001.visible = false
     

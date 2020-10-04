@@ -47,3 +47,5 @@ alpha_cut = 2
 frames = SubResource( 6 )
 animation = "run"
 frame = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
