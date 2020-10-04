@@ -19,6 +19,15 @@ config/name="Ld 47"
 run/main_scene="res://src/Level.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=128
+window/size/height=72
+window/size/test_width=640
+window/size/test_height=360
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [input]
 
 ui_left={
@@ -84,4 +93,7 @@ strafe_left={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+quality/shading/force_vertex_shading.mobile=false
+quality/filters/use_nearest_mipmap_filter=true
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
