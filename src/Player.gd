@@ -21,6 +21,11 @@ func _physics_process(_delta: float) -> void:
     $Sprite.play()
   else:
     $Sprite.stop()
+  
+  if velocity.x > 0:
+    $Sprite.flip_h = false
+  elif velocity.x < 0:
+    $Sprite.flip_h = true
 
 func get_input() -> void:
   velocity.x = 0

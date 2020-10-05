@@ -71,7 +71,7 @@ frames = SubResource( 5 )
 animation = "run"
 
 [node name="Mouth" type="AnimatedSprite3D" parent="."]
-transform = Transform( 12, 0, 0, 0, 12, 0, 0, 0, 12, 0.120636, 0.364079, 0.0228104 )
+transform = Transform( 12, 0, 0, 0, 12, 0, 0, 0, 12, -0.0046443, 0.364079, 0.0228104 )
 cast_shadow = 2
 alpha_cut = 2
 frames = SubResource( 8 )
