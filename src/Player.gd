@@ -1,8 +1,9 @@
 extends KinematicBody
 
 const speed = 8
-const max_score = 3
+const max_score = 8
 
+var active = true
 var velocity := Vector3()
 var crunch_sounds := []
 var score = 2
@@ -14,13 +15,16 @@ func _init() -> void:
       crunch_sounds.append(load(audio_file))
 
 func _physics_process(_delta: float) -> void:
-  get_input()
+  if active:
+    get_input()
+  
   velocity = move_and_slide(velocity)
   
-  if velocity.x != 0 || velocity.z != 0:
-    $Sprite.play()
-  else:
-    $Sprite.stop()
+  if active:
+    if velocity.x != 0 || velocity.z != 0:
+      $Sprite.play("run")
+    else:
+      $Sprite.stop()
   
   if velocity.x > 0:
     $Sprite.flip_h = false
@@ -57,7 +61,7 @@ func add_score() -> void:
   
   if score >= max_score:
     $Camera/LoopsLabel/Viewport/LoopsStrike.visible = true
-    $Camera/LoopsLabel/Viewport/LoopsText.text += "\nGet milk"
+    $Camera/LoopsLabel/Viewport/LoopsText.text += "\nGet milk!"
     
     get_parent().create_milk()
 
@@ -69,10 +73,19 @@ func crunch() -> void:
   
   add_score()
 
-func hideMouth() -> void:
-  $Mouth.visible = false
-
 func open_mouth() -> void:
   if not $Mouth.is_playing():
     $Mouth.frame = 0
     $Mouth.play()
+
+func drink_milk() -> void:
+  open_mouth()
+  active = false
+  velocity = Vector3()
+  
+  $Sprite.play("dance")
+  $Sprite.playing = true
+  
+  $Camera/LoopsLabel/Viewport/MilkStrike.visible = true
+  $Camera/LoopsLabel/Viewport/LoopsText.text += "\nDone!"
+  

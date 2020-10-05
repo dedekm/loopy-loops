@@ -21,7 +21,7 @@ func _on_Area_body_entered(body: Node) -> void:
     
     var timer = Timer.new()
     timer.autostart = true
-    timer.wait_time = 1
+    timer.wait_time = 0.8
     timer.one_shot = true
     timer.connect("timeout", self, "queue_free")
     add_child(timer)

@@ -8,7 +8,7 @@ func _init() -> void:
 func _ready() -> void:
   loop_timer = Timer.new()
   loop_timer.autostart = true
-  loop_timer.wait_time = 1.8
+  loop_timer.wait_time = 1.5
   loop_timer.connect("timeout", self, "generate_loop")
   add_child(loop_timer)
 
