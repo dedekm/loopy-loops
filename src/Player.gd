@@ -1,9 +1,11 @@
 extends KinematicBody
 
 const speed = 8
+const max_score = 8
 
 var velocity := Vector3()
 var crunch_sounds := []
+var score = 2
 
 func _init() -> void:
   for s in [1,2,3]:
@@ -35,14 +37,28 @@ func get_input() -> void:
   
   velocity = velocity.normalized() * speed
 
+func add_score() -> void:
+  if score >= max_score:
+    return
+
+  score += 1
+  
+  var text = "Eat l"
+  for _i in range(score):
+    text += "o"
+  text += "ps!"
+
+  $Camera/LoopsLabel/Viewport/Label.text = text 
+
 func crunch() -> void:
   if not $Mouth.is_playing():
     $Mouth.frame = 0
     $Mouth.play()
 
-  if not $AudioStreamPlayer.playing:
-      $AudioStreamPlayer.stream = crunch_sounds[randi() % crunch_sounds.size()]
-      $AudioStreamPlayer.play()
+  $AudioStreamPlayer.stream = crunch_sounds[randi() % crunch_sounds.size()]
+  $AudioStreamPlayer.play()
+  
+  add_score()
 
 func hideMouth() -> void:
   $Mouth.visible = false
