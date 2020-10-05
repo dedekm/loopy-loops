@@ -36,6 +36,13 @@ func get_input() -> void:
   velocity = velocity.normalized() * speed
 
 func crunch() -> void:
+  if not $Mouth.is_playing():
+    $Mouth.frame = 0
+    $Mouth.play()
+
   if not $AudioStreamPlayer.playing:
       $AudioStreamPlayer.stream = crunch_sounds[randi() % crunch_sounds.size()]
       $AudioStreamPlayer.play()
+
+func hideMouth() -> void:
+  $Mouth.visible = false
